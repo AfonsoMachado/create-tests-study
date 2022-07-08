@@ -1,14 +1,10 @@
 import { UserRepository } from "./UserRepository";
 import getEntityManagerMock from "../__mocks__/getEntityManagerMock";
 import { User } from "../entities/User";
-import { v4 as uuid } from "uuid";
+import { getMockUser } from "../__mocks__/mockUser";
 
 describe("UserRepository", () => {
-  const mockUser: User = {
-    user_id: uuid(),
-    name: "Test User",
-    email: "teste@mail.com",
-  };
+  const mockUser: User = getMockUser();
 
   it("Should save a user", async () => {
     const managerMock = await getEntityManagerMock({
@@ -21,7 +17,7 @@ describe("UserRepository", () => {
     expect(user).toHaveProperty("user_id");
     expect(user).toMatchObject({
       name: "Test User",
-      email: "teste@mail.com",
+      email: "test@mail.com",
     });
   });
 });

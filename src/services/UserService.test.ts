@@ -1,6 +1,6 @@
 import { UserService } from "./UserService";
-import { v4 as uuid } from "uuid";
 import { User } from "../entities/User";
+import { getMockUser } from "../__mocks__/mockUser";
 
 // Busca nesse caminha para fazer o mock
 jest.mock("../repositories/UserRepository");
@@ -8,11 +8,7 @@ jest.mock("../repositories/UserRepository");
 const mockUserRepository = require("../repositories/UserRepository");
 
 describe("UserService", () => {
-  const mockUser: User = {
-    user_id: uuid(),
-    name: "Test User",
-    email: "test@mail.com",
-  };
+  const mockUser: User = getMockUser();
 
   const userService = new UserService({
     userRepository: mockUserRepository,
