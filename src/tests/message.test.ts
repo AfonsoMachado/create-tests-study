@@ -9,9 +9,9 @@ describe("/", () => {
     console.log(server);
     const res = await server.get("/");
 
-    console.log("sdo");
+    console.log(res.data);
 
     expect(res.status).toBe(200);
-    expect(res.data).toMatchObject({ message: "Wellcome to TestsAPI" });
+    expect(res.data).toMatchObject({ message: "Welcome to TestsAPI" });
   });
 });
